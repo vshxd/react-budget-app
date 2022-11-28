@@ -31,16 +31,16 @@ export const Form = () => {
           minLength: { value: 4, message: "Minimum characters 4" },
         })}
         type="text"
-        placeholder="enter name ..."
+        placeholder="Enter name ..."
       />
       {errors.name && <ErrorMessage message={errors.name?.message} />}
       <StyledInputForm
         {...register("price", {
           required: "Price is required",
-          minLength: { value: 2, message: "Minimum characters 2" },
+          minLength: { value: 1, message: "Minimum characters 1" },
         })}
         type="number"
-        placeholder="enter cost ..."
+        placeholder="Enter cost ..."
       />
       {errors.price && <ErrorMessage message={errors.price?.message} />}
       <Submit />
