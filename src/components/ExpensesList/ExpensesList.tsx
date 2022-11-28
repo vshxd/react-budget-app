@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useExpensesContext } from "../../context";
-import { ExpensesListItem } from "../";
-import { StyledExpensesList } from "./styles";
+import { ExpensesListItem } from "..";
+import { StyledExpensesList, StyledMonkey } from "./styles";
 
 export const ExpensesList = () => {
   const { expenses, searchValue } = useExpensesContext();
@@ -9,6 +9,9 @@ export const ExpensesList = () => {
   useEffect(() => {
     setFilteredExpenses(expenses.filter((exp) => exp.name.toLowerCase().includes(searchValue)));
   }, [searchValue, expenses]);
+  if (!filteredExpenses.length) {
+    return <StyledMonkey> Ooooops 🙈</StyledMonkey>;
+  }
   return (
     <StyledExpensesList>
       {filteredExpenses.map(({ name, price, id }) => (

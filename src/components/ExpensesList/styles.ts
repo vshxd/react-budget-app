@@ -7,3 +7,8 @@ export const StyledExpensesList = styled.ul`
     display: none;
   }
 `;
+
+export const StyledMonkey = styled.div`
+  padding: 60px 60px;
+  margin: 0 auto;
+`;
