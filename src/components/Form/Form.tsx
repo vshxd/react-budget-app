@@ -13,12 +13,10 @@ export const Form = () => {
     formState: { errors },
   } = useForm<IFormData>({ mode: "onBlur" });
   const { setNewExpense } = useExpensesContext();
-  const { setRemaining, setSpending, budget } = useBudgetContext();
+  const { budget } = useBudgetContext();
   const onSubmit: SubmitHandler<IFormData> = ({ name, price }) => {
     if (budget > 0) {
       setNewExpense({ name, price, id: v4() });
-      setSpending(+price);
-      setRemaining();
       reset();
     }
   };
@@ -28,7 +26,7 @@ export const Form = () => {
       <StyledInputForm
         {...register("name", {
           required: "Name is required",
-          minLength: { value: 4, message: "Minimum characters 4" },
+          minLength: { value: 2, message: "Minimum characters 2" },
         })}
         type="text"
         placeholder="Enter name ..."

@@ -1,11 +1,11 @@
 export * from "./AppContext/AppContext";
-export * from "./AppContext/index";
+export * from "./AppContext/types";
 
 export * from "./BudgetContext/BudgetContext";
-export * from "./BudgetContext/index";
+export * from "./BudgetContext/types";
 
 export * from "./ExpensesContext/ExpensesContext";
-export * from "./ExpensesContext/index";
+export * from "./ExpensesContext/types";
 
 export * from "./CurrencyContext/CurrencyContext";
-export * from "./CurrencyContext/index";
+export * from "./CurrencyContext/types";

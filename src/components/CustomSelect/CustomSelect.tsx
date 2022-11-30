@@ -11,6 +11,7 @@ export const CustomSelect = () => {
   };
   return (
     <Select
+      isSearchable={false}
       styles={selectStyles}
       options={currencies}
       value={currentCurrency}

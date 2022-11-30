@@ -5,14 +5,13 @@ import { StyledBudget, StyledBtn, StyledInput, StyledText } from "./styles";
 import { useDebounce } from "../../hooks/useDebounce";
 
 export const BudgetCard = () => {
-  const { setBudget, budget, setRemaining } = useBudgetContext();
+  const { setBudget, budget } = useBudgetContext();
   const { currentCurrency } = useCurrencyContext();
   const inputBudget = useInput();
   const [isBudgetActive, toogleBudgetActive] = useToggle();
   const [isDisableSave, setDisableSave] = useState<boolean>(true);
   const handleSave = () => {
     setBudget(+inputBudget.value);
-    setRemaining();
     toogleBudgetActive();
   };
   const handleEdit = () => toogleBudgetActive();

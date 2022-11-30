@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { ExpensesContext } from "..";
-import { IChildrenContext, IExpense, IExpenseContext } from "../../types/types";
+import { createContext, useContext, useState } from "react";
+import { IChildrenContext } from "../../types/types";
+import { IExpense, IExpenseContext } from "./types";
 
+export const ExpensesContext = createContext<IExpenseContext>({} as IExpenseContext);
+export const useExpensesContext = () => useContext(ExpensesContext);
 export const ExpensesContextProvider = ({ children }: IChildrenContext) => {
   const useExpensesContextValue = () => {
     const [expensesContext, setExpensesContext] = useState<IExpenseContext>(() => ({
@@ -16,13 +18,6 @@ export const ExpensesContextProvider = ({ children }: IChildrenContext) => {
         setExpensesContext((ctx) => ({
           ...ctx,
           expenses: ctx.expenses.filter((expense) => expense.id !== id),
-        }));
-      },
-      searchValue: "",
-      searchExpense: (name) => {
-        setExpensesContext((ctx) => ({
-          ...ctx,
-          searchValue: name.toLowerCase(),
         }));
       },
     }));

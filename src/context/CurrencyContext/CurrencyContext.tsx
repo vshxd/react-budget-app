@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { CurrencyContext } from "..";
+import { createContext, useContext, useState } from "react";
 import { Currency } from "../../config";
-import { IChildrenContext, ICurrencyContext, ICurrencyOption } from "../../types/types";
+import { IChildrenContext } from "../../types/types";
+import { ICurrencyContext, ICurrencyOption } from "./types";
 
 const options: ICurrencyOption[] = [
   { value: Currency.USD, label: "USD" },
@@ -9,6 +9,8 @@ const options: ICurrencyOption[] = [
   { value: Currency.EUR, label: "EUR" },
   { value: Currency.GBR, label: "GBR" },
 ];
+export const CurrencyContext = createContext<ICurrencyContext>({} as ICurrencyContext);
+export const useCurrencyContext = () => useContext(CurrencyContext);
 
 export const CurrencyContextProvider = ({ children }: IChildrenContext) => {
   const useCurrencyContextValue = () => {

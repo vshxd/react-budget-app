@@ -1,13 +1,14 @@
-import { useBudgetContext, useCurrencyContext } from "../../context";
+import { useCurrencyContext, useExpensesContext } from "../../context";
 import { StyledSpentCard } from "./styles";
 
 export const SpentCard = () => {
   const { currentCurrency } = useCurrencyContext();
-  const { spending } = useBudgetContext();
+  const { expenses } = useExpensesContext();
+  const spending = expenses.reduce((total, { price }) => total + +price, 0);
 
   return (
     <StyledSpentCard>
-      Spent so far: {spending} {currentCurrency.value}
+      Spent so far:{spending} {currentCurrency.value}
     </StyledSpentCard>
   );
 };

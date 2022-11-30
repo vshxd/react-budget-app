@@ -3,7 +3,7 @@ import { Color } from "../../config/color";
 
 export const StyledExpensesListItem = styled.li`
   display: grid;
-  grid-template-columns: 1fr 0.2fr 0.1fr;
+  grid-template-columns: 1fr 0.3fr 0.1fr;
   grid-template-rows: 20px;
   padding: 15px 20px;
   align-items: center;
