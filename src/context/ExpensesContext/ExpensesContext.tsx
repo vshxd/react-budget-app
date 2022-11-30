@@ -4,26 +4,27 @@ import { IExpense, IExpenseContext } from "./types";
 
 export const ExpensesContext = createContext<IExpenseContext>({} as IExpenseContext);
 export const useExpensesContext = () => useContext(ExpensesContext);
-export const ExpensesContextProvider = ({ children }: IChildrenContext) => {
-  const useExpensesContextValue = () => {
-    const [expensesContext, setExpensesContext] = useState<IExpenseContext>(() => ({
-      expenses: [],
-      setNewExpense: (expense: IExpense) => {
-        setExpensesContext((ctx) => ({
-          ...ctx,
-          expenses: [...ctx.expenses, expense],
-        }));
-      },
-      deleteExpense: (id) => {
-        setExpensesContext((ctx) => ({
-          ...ctx,
-          expenses: ctx.expenses.filter((expense) => expense.id !== id),
-        }));
-      },
-    }));
-    return expensesContext;
-  };
 
+const useExpensesContextValue = () => {
+  const [expensesContext, setExpensesContext] = useState<IExpenseContext>(() => ({
+    expenses: [],
+    setNewExpense: (expense: IExpense) => {
+      setExpensesContext((ctx) => ({
+        ...ctx,
+        expenses: [...ctx.expenses, expense],
+      }));
+    },
+    deleteExpense: (id) => {
+      setExpensesContext((ctx) => ({
+        ...ctx,
+        expenses: ctx.expenses.filter((expense) => expense.id !== id),
+      }));
+    },
+  }));
+  return expensesContext;
+};
+
+export const ExpensesContextProvider = ({ children }: IChildrenContext) => {
   return (
     <ExpensesContext.Provider value={useExpensesContextValue()}>
       {children}

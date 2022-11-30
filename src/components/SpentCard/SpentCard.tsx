@@ -8,7 +8,7 @@ export const SpentCard = () => {
 
   return (
     <StyledSpentCard>
-      Spent so far:{spending} {currentCurrency.value}
+      Spent so far: {spending} {currentCurrency.value}
     </StyledSpentCard>
   );
 };
